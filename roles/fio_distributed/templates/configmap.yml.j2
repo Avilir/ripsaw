@@ -35,9 +35,11 @@ data:
     write_bw_log=fio
     write_iops_log=fio
     write_lat_log=fio
-    write_hist_log=fio
     log_avg_msec={{workload_args.log_sample_rate}}
-    log_hist_msec={{workload_args.log_sample_rate}}
+{% if workload_args.histogram is defined and workload_args.histogram is sameas true %}
+    write_hist_log=fio
+    log_hist_msec={{workload_args.log_hist_rate}}
+{% endif %}
     clocksource=clock_gettime
     kb_base=1000
     unit_base=8

@@ -51,6 +51,8 @@ spec:
       read_ramp_time: 5
       filesize: 2GiB
       log_sample_rate: 1000
+      histogram: true
+      log_hist_rate: 2000
       storageclass: rook-ceph-block
       storagesize: 5Gi
       rook_ceph_drop_caches: True
@@ -194,6 +196,9 @@ The workload loops are nested as such from the CR options:
   > Technical Note: If you are running kube/openshift on VMs make sure the diskimage or volume is preallocated.
 - **prefill**: (Optional) boolean to enable/disable prefill SDS
   - prefill requirement stems from Ceph RBD thin-provisioning - just creating the RBD volume doesn't mean that there is space allocated to read and write out there. For example, reads to an uninitialized volume don't even talk to the Ceph OSDs, they just return immediately with zeroes in the client.
+- **histogram**: (Optional) boolean to enable/disable collection the histogram data
+  - histogram require additional parameter :
+  - **log_hist_rate**: (int) collection interval in millisec
 
 #### EXPERT: spec.global_overrides
 
