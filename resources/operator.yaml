@@ -35,7 +35,7 @@ spec:
           - /tmp/ansible-operator/runner
           - stdout
           #image: quay.io/benchmark-operator/benchmark-operator:master
-          image: quay.io/avili/ripsaw:latest
+          image: quay.io/avili/benchmark-operator:latest
           imagePullPolicy: "Always"
           volumeMounts:
           - mountPath: /tmp/ansible-operator/runner
@@ -43,7 +43,7 @@ spec:
             readOnly: true
         - name: benchmark-operator
           #image: quay.io/benchmark-operator/benchmark-operator:master
-          image: quay.io/avili/ripsaw:latest
+          image: quay.io/avili/benchmark-operator:latest
           imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE
